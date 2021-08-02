@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import { DashBoard, Product } from "pages";
+import { Header } from "components/own";
 
 import { ROUTES } from "app-constants";
 import store from "store";
@@ -11,6 +12,7 @@ const Root = () => {
   return (
     <Provider store={store}>
       <Router>
+        <Header />
         <React.Suspense fallback={<div>loading</div>}>
           <Switch>
             <Route exact path={ROUTES.DashBoard}>
