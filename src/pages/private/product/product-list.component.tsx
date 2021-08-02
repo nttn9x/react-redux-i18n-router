@@ -7,8 +7,10 @@ const ProductList = () => {
   const { data } = useProductListHook();
   return (
     <div>
-      {data.map((d: any) => (
-        <div className={styles.text}>{d}</div>
+      {data.map((d: any, i: number) => (
+        <div key={i} className={styles.text}>
+          {d}
+        </div>
       ))}
     </div>
   );

@@ -1,30 +1,20 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import styles from "./header.module.scss";
+
+import { AppBar, Toolbar, Typography } from "components/libraries";
+
+import Settings from "./header-settings.componen";
 
 const Header = () => {
-  const { t, i18n } = useTranslation("common");
-  const keyLang = i18n.language;
-
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
-
   return (
-    <header>
-      {t("language")}
-      <button
-        style={{ color: keyLang === "vi" ? "red" : "" }}
-        onClick={() => changeLanguage("vi")}
-      >
-        VI
-      </button>
-      <button
-        style={{ color: keyLang === "en" ? "red" : "" }}
-        onClick={() => changeLanguage("en")}
-      >
-        EN
-      </button>
-    </header>
+    <AppBar classes={{ root: styles.header }} position="static">
+      <Toolbar variant="dense">
+        <Typography classes={{ root: styles.title }} variant="h6">
+          Kitty
+        </Typography>
+        <Settings />
+      </Toolbar>
+    </AppBar>
   );
 };
 
