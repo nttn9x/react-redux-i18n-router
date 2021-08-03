@@ -23,6 +23,9 @@ const reducer = produce((draft: any, action: Actions) => {
       draft.loading = false;
       draft.firstLoad = false;
       break;
+    case Types.ADD_PRODUCT:
+      draft.data.push(action.payload.data);
+      break;
   }
 }, initialState);
 

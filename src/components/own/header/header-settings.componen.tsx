@@ -10,7 +10,7 @@ import {
 import { setItem } from "utils/browser-storage.util";
 
 const HeaderSettings = () => {
-  const { t, i18n } = useTranslation("common");
+  const { i18n } = useTranslation("common");
   const keyLang = i18n.language;
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null

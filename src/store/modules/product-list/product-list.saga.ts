@@ -1,16 +1,21 @@
-import { delay, put, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
+import { getProducts } from "services/product.service";
 import { setProducts } from "./product-list.action";
-import { Types } from "./product-list.constant";
+import { Types, AddProductAction } from "./product-list.constant";
 
 function* watchLoadProducts() {
-  let data = ["Item 1", "Item 2"];
-  let count = 0;
+  const data: any = yield call(getProducts);
 
-  yield delay(2000);
+  yield put(setProducts(data.length, data));
+}
 
-  yield put(setProducts(count, data));
+function* watchAddProduct(action: AddProductAction) {
+  if (action.payload.fnCallBack) {
+    action.payload.fnCallBack();
+  }
 }
 
 export default function* root() {
   yield takeLatest(Types.LOAD_PRODUCTS, watchLoadProducts);
+  yield takeLatest(Types.ADD_PRODUCT, watchAddProduct);
 }

@@ -2,6 +2,7 @@ import {
   Types,
   SetProductsAction,
   LoadProductsAction,
+  AddProductAction,
 } from "./product-list.constant";
 
 export function setProducts(count: number, products: any[]): SetProductsAction {
@@ -10,4 +11,11 @@ export function setProducts(count: number, products: any[]): SetProductsAction {
 
 export function loadProducts(): LoadProductsAction {
   return { type: Types.LOAD_PRODUCTS };
+}
+
+export function addProduct(
+  data: string,
+  fnCallBack: Function
+): AddProductAction {
+  return { type: Types.ADD_PRODUCT, payload: { data, fnCallBack } };
 }
