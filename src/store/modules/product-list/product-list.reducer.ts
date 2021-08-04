@@ -15,10 +15,12 @@ const initialState: IProductListState = {
 
 const reducer = produce((draft: any, action: Actions) => {
   switch (action.type) {
+    //step3
     case Types.LOAD_PRODUCTS:
       draft.loading = true;
       break;
     case Types.SET_PRODUCTS:
+      // step 6
       draft.data = action.payload.products;
       draft.loading = false;
       draft.firstLoad = false;

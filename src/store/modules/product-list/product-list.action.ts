@@ -10,6 +10,7 @@ export function setProducts(count: number, products: any[]): SetProductsAction {
 }
 
 export function loadProducts(): LoadProductsAction {
+  // step2
   return { type: Types.LOAD_PRODUCTS };
 }
 

@@ -1,4 +1,4 @@
-### Welcome to [CEP]
+### Welcome to [Tinder]
 
 ## Hey `Soldier`, how are you today?
 
