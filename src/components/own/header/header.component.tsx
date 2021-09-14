@@ -5,7 +5,7 @@ import styles from "./header.module.scss";
 
 import { AppBar, Button, Toolbar, Typography } from "components/libraries";
 
-import Settings from "./header-settings.componen";
+import Settings from "./header-settings.component";
 import { ROUTES } from "app-constants";
 
 const Header = () => {

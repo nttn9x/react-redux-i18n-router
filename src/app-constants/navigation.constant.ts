@@ -1,4 +1,5 @@
 export enum ROUTES {
-  DashBoard = "/",
-  Product = "/product",
+  DashBoard = "/auth/dashboard",
+  Product = "/auth/product",
+  Login = "/login",
 }

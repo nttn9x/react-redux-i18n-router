@@ -1,0 +1,15 @@
+{
+  "common": {
+    "welcome": "Hey FPT, How are you today? Vi",
+    "language": "Language",
+    "save": "Save"
+  },
+  "product": {
+    "title": " Page title",
+    "name": "Product Name"
+  },
+  "navBar": {
+    "product": "Product",
+    "dashboard": "Dashboard"
+  }
+}

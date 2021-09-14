@@ -3,8 +3,8 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import { getItem } from "utils/browser-storage.util";
 
-import en from "./en.i18n";
-import vi from "./vi.i18n";
+import en from "./en.i18n.json";
+import vi from "./vi.i18n.json";
 
 const lng = getItem(BROWSER_STORAGE_LANGUAGE);
 

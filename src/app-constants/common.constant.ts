@@ -6,3 +6,7 @@ export enum LANGUAGES {
   Vietnamese = "vi",
   English = "en",
 }
+
+export enum STORAGE {
+  AUTH = "nttn9x",
+}
