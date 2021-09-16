@@ -1,5 +1,5 @@
-import { ROUTES } from "app-constants";
 import React from "react";
+import { ROUTES } from "app-constants";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";
 import { useAuth } from "context/auth.context";
@@ -10,9 +10,9 @@ const Login = () => {
   const { t } = useTranslation("common");
 
   const login = () => {
-    localStorage.setItem("nttn9x", "asdasd");
-    history.push(ROUTES.DashBoard);
     updateUser("asdas");
+
+    history.push(ROUTES.DashBoard);
   };
 
   return (

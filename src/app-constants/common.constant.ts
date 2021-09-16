@@ -10,3 +10,9 @@ export enum LANGUAGES {
 export enum STORAGE {
   AUTH = "nttn9x",
 }
+
+export enum HTTP_CODE {
+  ERROR = 404,
+  UNAUTHORIZED = 401,
+  INTERNAL_SERVER_ERROR = 500,
+}

@@ -5,10 +5,13 @@ import "./index.css";
 import Root from "routes";
 
 import "i18n";
+import { setUpApi } from "utils/service.util";
 
 import reportWebVitals from "./reportWebVitals";
 
 function createMagic() {
+  setUpApi();
+
   ReactDOM.render(
     <React.StrictMode>
       <Root />

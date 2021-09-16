@@ -8,9 +8,11 @@ import {
   BROWSER_STORAGE_LANGUAGE,
 } from "app-constants/common.constant";
 import { setItem } from "utils/browser-storage.util";
+import { useAuth } from "context/auth.context";
 
 const HeaderSettings = () => {
   const { i18n } = useTranslation("common");
+  const { updateUser } = useAuth();
   const keyLang = i18n.language;
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
@@ -24,6 +26,10 @@ const HeaderSettings = () => {
     setAnchorEl(null);
   };
 
+  const onLogout = () => {
+    updateUser(null);
+  };
+
   const changeLanguage = (lng: string) => () => {
     i18n.changeLanguage(lng);
 
@@ -34,6 +40,9 @@ const HeaderSettings = () => {
 
   return (
     <>
+      <IconButton color="inherit" onClick={onLogout}>
+        <LanguageIcon />
+      </IconButton>
       <IconButton color="inherit" onClick={showSettings}>
         <LanguageIcon />
       </IconButton>
