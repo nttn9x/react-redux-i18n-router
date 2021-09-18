@@ -62,7 +62,7 @@ export function handleAfterCallApi(instance?: AxiosInstance) {
 }
 
 export function setUpApi() {
-  axios.defaults.baseURL = "/api";
+  axios.defaults.baseURL = "/api/v1";
   axios.defaults.headers.post["Content-Type"] = "application/json";
 
   handleBeforeCallApi();

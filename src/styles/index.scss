@@ -1,0 +1,27 @@
+@import "./mixins/utilities";
+@import "./display";
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+:root {
+  --gutter-component: 10px;
+  --gutter-container: 20px;
+}
+$spacer: 1;
+$values: $spacer * 0.25rem, $spacer * 0.5rem, #{$spacer}rem, $spacer * 1.5rem,
+  $spacer * 3rem;
+
+@include generate-utility("pt", "padding-top", $values);
+@include generate-utility("pr", "padding-right", $values);
+@include generate-utility("pl", "padding-left", $values);
+@include generate-utility("pb", "padding-bottom", $values);
+
+@include generate-utility("mt", "margin-top", $values);
+@include generate-utility("mr", "margin-right", $values);
+@include generate-utility("ml", "margin-left", $values);
+@include generate-utility("mb", "margin-bottom", $values);

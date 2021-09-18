@@ -2,7 +2,12 @@
   "common": {
     "welcome": "Hey FPT, How are you today?",
     "language": "Language",
-    "save": "Save"
+    "email": "Email",
+    "password": "Password"
+  },
+  "action": {
+    "save": "Save",
+    "login": "Login"
   },
   "product": {
     "title": " Page title",

@@ -1,0 +1,7 @@
+@mixin generate-utility($key, $attribute, $selectors) {
+  @for $i from 0 to length($selectors) {
+    .#{$key}-#{$i} {
+      #{$attribute}: #{nth($selectors, $i + 1)};
+    }
+  }
+}

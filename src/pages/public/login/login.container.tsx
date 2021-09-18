@@ -1,24 +1,31 @@
-import React from "react";
-import { ROUTES } from "app-constants";
+import styles from "./login.module.scss";
+
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router";
-import { useAuth } from "context/auth.context";
+import classnames from "classnames";
+
+import { TextField } from "components/libraries";
+
+import useLoginHook from "./login.hook";
 
 const Login = () => {
-  const { updateUser } = useAuth();
-  const history = useHistory();
-  const { t } = useTranslation("common");
-
-  const login = () => {
-    updateUser("asdas");
-
-    history.push(ROUTES.DashBoard);
-  };
+  const { t } = useTranslation(["common", "action"]);
+  const { handleChange, doLogin } = useLoginHook();
 
   return (
-    <div>
-      This is login
-      <button onClick={login}>Login</button>
+    <div className="d-flex h-100 align-items-center justify-content-center">
+      <div className={classnames("d-flex flex-column", styles.form)}>
+        <TextField
+          onChange={handleChange("email")}
+          variant="outlined"
+          label={t("email")}
+        />
+        <TextField
+          onChange={handleChange("password")}
+          variant="outlined"
+          label={t("password")}
+        />
+        <button onClick={doLogin}>{t("action:login")}</button>
+      </div>
     </div>
   );
 };
