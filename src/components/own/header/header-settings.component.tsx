@@ -2,7 +2,10 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 import { Popover, IconButton, MenuList, MenuItem } from "components/libraries";
-import { GTranslate as LanguageIcon } from "components/icons";
+import {
+  GTranslate as LanguageIcon,
+  OutdoorGrill as OutdoorGrillIcon,
+} from "components/icons";
 import {
   LANGUAGES,
   BROWSER_STORAGE_LANGUAGE,
@@ -41,7 +44,7 @@ const HeaderSettings = () => {
   return (
     <>
       <IconButton color="inherit" onClick={onLogout}>
-        <LanguageIcon />
+        <OutdoorGrillIcon />
       </IconButton>
       <IconButton color="inherit" onClick={showSettings}>
         <LanguageIcon />

@@ -1,35 +1,26 @@
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
 
-import { useAuth } from "context/auth.context";
 import { ROUTES } from "app-constants";
+import { useAuth } from "context/auth.context";
+import { Navigate, useLocation, Outlet } from "react-router-dom";
 
-interface IProps {
-  children: any;
-  path: string;
-}
+import { Header } from "components/own";
 
-const AuthRoute = ({ children, ...rest }: IProps) => {
+const AuthRoute = () => {
   const {
     state: { user },
   } = useAuth();
+  let location = useLocation();
+
+  if (!user) {
+    return <Navigate to={ROUTES.Login} state={{ from: location }} replace />;
+  }
 
   return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        !!user ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: ROUTES.Login,
-              state: { from: location },
-            }}
-          />
-        )
-      }
-    />
+    <>
+      <Header />
+      <Outlet />
+    </>
   );
 };
 

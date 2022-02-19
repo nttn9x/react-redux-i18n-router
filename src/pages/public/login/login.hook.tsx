@@ -1,12 +1,12 @@
 import React from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import { ROUTES } from "app-constants";
 import { useAuth } from "context/auth.context";
 
 import { login as loginApi } from "services/auth.service";
 
-interface State {
+interface IState {
   email: string;
   password: string;
   loading: boolean;
@@ -14,16 +14,17 @@ interface State {
 
 const useLoginHook = () => {
   const { updateUser } = useAuth();
-  const history = useHistory();
+  console.log("Nguyen", updateUser);
+  const navigate = useNavigate();
 
-  const [values, setValues] = React.useState<State>({
+  const [values, setValues] = React.useState<IState>({
     email: "",
     password: "",
     loading: false,
   });
 
   const handleChange =
-    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    (prop: keyof IState) => (event: React.ChangeEvent<HTMLInputElement>) => {
       setValues({ ...values, [prop]: event.target.value });
     };
 
@@ -35,7 +36,7 @@ const useLoginHook = () => {
       });
       updateUser(data);
 
-      history.push(ROUTES.DashBoard);
+      navigate(ROUTES.DashBoard, { replace: true });
     } catch (error) {
       console.log(error);
     }

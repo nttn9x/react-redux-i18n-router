@@ -1,17 +1,12 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import { DashBoard, Product, Login } from "pages";
-import { Header } from "components/own";
-import ThemeContext from "context/theme.context";
-import AuthContext from "context/auth.context";
+import { Login, DashBoard, Product } from "pages";
 import { ROUTES } from "app-constants";
+import { PageLoading } from "components/own";
+import AuthContext from "context/auth.context";
+
 import store from "store";
 
 import AuthRoute from "./auth.route";
@@ -20,30 +15,27 @@ const Root = () => {
   return (
     <Provider store={store}>
       <AuthContext>
-        <ThemeContext>
-          <Router>
-            <React.Suspense fallback={<div>loading</div>}>
-              <Switch>
-                <AuthRoute path="/auth">
-                  <Header />
-                  <Switch>
-                    <Route exact path={ROUTES.DashBoard}>
-                      <DashBoard />
-                    </Route>
-                    <Route path={ROUTES.Product}>
-                      <Product />
-                    </Route>
-                    <Redirect from="/auth" to={ROUTES.DashBoard} />
-                  </Switch>
-                </AuthRoute>
-                <Route path={ROUTES.Login}>
-                  <Login />
-                </Route>
-                <Redirect exact from="/" to={"/auth"} />
-              </Switch>
-            </React.Suspense>
-          </Router>
-        </ThemeContext>
+        <BrowserRouter>
+          <React.Suspense fallback={<PageLoading />}>
+            <Routes>
+              <Route path="/auth" element={<AuthRoute />}>
+                <Route path={ROUTES.DashBoard} element={<DashBoard />} />
+                <Route path={ROUTES.Product} element={<Product />} />
+
+                <Route
+                  path="*"
+                  element={<Navigate to={ROUTES.DashBoard} replace />}
+                />
+              </Route>
+              <Route path={ROUTES.Login} element={<Login />} />
+
+              <Route
+                path="*"
+                element={<Navigate to={ROUTES.Login} replace />}
+              />
+            </Routes>
+          </React.Suspense>
+        </BrowserRouter>
       </AuthContext>
     </Provider>
   );
